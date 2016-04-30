@@ -12,7 +12,8 @@ Simply places this in the /factorio/saves folder and set ```FACTORIO_WORLD_NAME`
 
 The following environment variables are available:
 ```
-ENV FACTORIO_WORLD_NAME (DEFAULT: "docker" - Name of the save zip file)
-ENV FACTORIO_AUTOSAVE_INTERVAL (DEFAULT: "1" - Autosave interval in minutes)
-ENV FACTORIO_LATENCY (DEFAULT: "12" - Latency in ticks)
+FACTORIO_WORLD_NAME (DEFAULT: "docker" - Name of the save zip file)
+FACTORIO_AUTOSAVE_INTERVAL (DEFAULT: "1" - Autosave interval in minutes)
+FACTORIO_LATENCY_MS (DEFAULT: "250" - Latency in milliseconds)
+FACTORIO_NO_AUTO_PAUSE (DEFAULT: "0" - Set to 1 to keep the game running when no players are connected)
 ```

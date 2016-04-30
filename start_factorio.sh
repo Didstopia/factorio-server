@@ -11,9 +11,15 @@ exit_handler()
 	exit
 }
 
+FACTORIO_STARTUP_COMMAND=--start-server "$FACTORIO_WORLD_NAME".zip --autosave-interval "$FACTORIO_AUTOSAVE_INTERVAL" --latency-ms "$FACTORIO_LATENCY_MS"
+if [ ! -z ${FACTORIO_NO_AUTO_PAUSE+x} ]; then
+	if [ "$FACTORIO_NO_AUTO_PAUSE" = "1" ]; then
+		RUST_STARTUP_COMMAND="$RUST_STARTUP_COMMAND --no-auto-pause"
+	fi
+fi
 # Run the server
 echo "Starting Factorio.."
-./factorio/bin/x64/factorio --start-server "$FACTORIO_WORLD_NAME".zip --autosave-interval "$FACTORIO_AUTOSAVE_INTERVAL" --latency "$FACTORIO_LATENCY" &
+./factorio/bin/x64/factorio $FACTORIO_STARTUP_COMMAND &
 pid="$!"
 
 wait

@@ -9,7 +9,7 @@ fi
 ORIGINAL_SAVE_FILE="$FACTORIO_WORLD_NAME".zip
 
 # Check that we can find the "latest" save file
-LATEST_SAVE_FILE=$(ls -t *.zip 2> /dev/null | head -1)
+LATEST_SAVE_FILE=$(ls -t /factorio/saves/*.zip 2> /dev/null | head -1)
 if [ -z "${LATEST_SAVE_FILE}" ]; then
 	echo "Didn't find any savefiles, skipping autosave check!"
 	exit 1

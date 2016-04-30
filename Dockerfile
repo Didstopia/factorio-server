@@ -38,8 +38,9 @@ RUN wget -q --show-progress --no-check-certificate https://www.factorio.com/get-
 	chmod +x /factorio/bin/x64/factorio && \
 	rm -fr /factorio.tar.gz
 
-# Copy the Factorio startup script
+# Copy the Factorio script
 ADD start_factorio.sh /start.sh
+ADD check_autosave.sh /check_autosave.sh
 
 # Expose necessary ports
 EXPOSE 34197/udp

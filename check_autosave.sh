@@ -6,7 +6,7 @@ if [ -z "${FACTORIO_WORLD_NAME}" ]; then
 fi
 
 # Construct the zip file name for the original savefile
-ORIGINAL_SAVE_FILE="$FACTORIO_WORLD_NAME".zip
+ORIGINAL_SAVE_FILE=/factorio/saves/"$FACTORIO_WORLD_NAME".zip
 
 # Check that we can find the "latest" save file
 LATEST_SAVE_FILE=$(ls -t /factorio/saves/*.zip 2> /dev/null | head -1)
@@ -23,4 +23,4 @@ fi
 
 # Copy the latest save file over the original save file
 echo "Using latest save file:" $LATEST_SAVE_FILE
-cp /factorio/saves/$LATEST_SAVE_FILE /factorio/saves/$ORIGINAL_SAVE_FILE
+cp $LATEST_SAVE_FILE $ORIGINAL_SAVE_FILE

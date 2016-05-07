@@ -33,7 +33,7 @@ RUN mkdir -p /factorio/saves
 VOLUME ["/factorio/saves"]
 
 # Install Factorio
-RUN wget -q --show-progress --no-check-certificate https://www.factorio.com/get-download/0.12.29/headless/linux64 -O /factorio.tar.gz && \
+RUN wget -q --show-progress --no-check-certificate https://www.factorio.com/get-download/0.12.33/headless/linux64 -O /factorio.tar.gz && \
 	tar -xzf /factorio.tar.gz -C / && \
 	chmod +x /factorio/bin/x64/factorio && \
 	rm -fr /factorio.tar.gz

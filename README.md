@@ -1,6 +1,6 @@
 # Factorio server that runs inside a Docker container
 
-Updated up to version **0.12.33**.
+Updated up to version **0.12.35**.
 
 **NOTE**: In order to run the server, you need to supply it with a valid world save file (as .zip).
 Simply places this in the /factorio/saves folder and set ```FACTORIO_WORLD_NAME``` to match the filename (don't include the ".zip" part).

@@ -9,5 +9,5 @@ NOTE: This image will always install/update to the latest Factorio server. In ca
 The following environment variables are available:
 ```
 FACTORIO_WORLD_NAME (DEFAULT: "docker" - Name of the save zip file)
-FACTORIO_NO_AUTO_PAUSE (DEFAULT: "0" - Set to 1 to keep the game running when no players are connected)
+FACTORIO_SERVER_SETTINGS (DEFAULT: "" - Set to 1 to the full file path of your server-settings.json, if you use one)
 ```

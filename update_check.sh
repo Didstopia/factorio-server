@@ -28,7 +28,8 @@ else
 	echo $NEW_BUILDID > /factorio/build.id
 
 	# If Factorio is already running, we simply close it, which restarts the container
-	if pgrep "factorio" > /dev/null then
+	if pgrep -x "factorio" > /dev/null
+	then
 		pkill factorio
 	else
 		LATEST_LINK=$(node /scraper/app.js url);

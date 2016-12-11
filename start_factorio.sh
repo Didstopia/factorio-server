@@ -5,9 +5,9 @@
 
 # Setup Factorio startup arguments
 FACTORIO_STARTUP_COMMANDS=""
-if [ ! -z ${FACTORIO_NO_AUTO_PAUSE+x} ]; then
-	if [ "$FACTORIO_NO_AUTO_PAUSE" = "1" ]; then
-		FACTORIO_STARTUP_COMMANDS="$FACTORIO_STARTUP_COMMANDS --no-auto-pause"
+if [ ! -z ${FACTORIO_SERVER_SETTINGS+x} ]; then
+	if [ "$FACTORIO_SERVER_SETTINGS" != "" ]; then
+		FACTORIO_STARTUP_COMMANDS="$FACTORIO_STARTUP_COMMANDS --server-settings $FACTORIO_SERVER_SETTINGS"
 	fi
 fi
 

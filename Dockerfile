@@ -29,26 +29,35 @@ ENV TZ=Europe/Helsinki
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Setup the volume
-RUN mkdir -p /factorio/saves
-VOLUME ["/factorio/saves"]
+RUN mkdir -p /factorio
+VOLUME ["/factorio"]
 
-# Install Factorio
-RUN wget -q --show-progress --no-check-certificate https://www.factorio.com/get-download/0.12.35/headless/linux64 -O /factorio.tar.gz && \
-	tar -xzf /factorio.tar.gz -C / && \
-	chmod +x /factorio/bin/x64/factorio && \
-	rm -fr /factorio.tar.gz
+# Install NodeJS (see below)
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
 
-# Copy the Factorio script
+# Setup update checking support (web scraping)
+ADD scraper/ /scraper/
+WORKDIR /scraper
+RUN npm install
+WORKDIR /
+
+# Setup scheduling support
+ADD scheduler_app/ /scheduler_app/
+WORKDIR /scheduler_app
+RUN npm install
+WORKDIR /
+
+# Copy the Factorio scripts
 ADD start_factorio.sh /start.sh
 ADD check_autosave.sh /check_autosave.sh
+ADD update_check.sh /update_check.sh
 
 # Expose necessary ports
 EXPOSE 34197/udp
 
 # Setup default environment variables for the server
 ENV FACTORIO_WORLD_NAME "docker"
-ENV FACTORIO_AUTOSAVE_INTERVAL "5"
-ENV FACTORIO_LATENCY_MS "250"
 ENV FACTORIO_NO_AUTO_PAUSE "0"
 
 # Cleanup

@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
+# Check for updates and install if necessary
+./update_check.sh
+
+# Setup Factorio startup arguments
 FACTORIO_STARTUP_COMMANDS=""
 if [ ! -z ${FACTORIO_NO_AUTO_PAUSE+x} ]; then
 	if [ "$FACTORIO_NO_AUTO_PAUSE" = "1" ]; then
 		FACTORIO_STARTUP_COMMANDS="$FACTORIO_STARTUP_COMMANDS --no-auto-pause"
 	fi
 fi
+
+# Start cron
+echo "Starting scheduled task manager.."
+node /scheduler_app/app.js &
 
 # Set the working directory
 cd /
@@ -14,6 +22,9 @@ cd /
 echo "Checking autosaves.."
 ./check_autosave.sh
 
-# Run the server
+# Run the server (create map if it doesn't exist yet)
 echo "Starting Factorio.."
-exec /factorio/bin/x64/factorio --start-server "$FACTORIO_WORLD_NAME".zip --autosave-interval "$FACTORIO_AUTOSAVE_INTERVAL" --latency-ms "$FACTORIO_LATENCY_MS" $FACTORIO_STARTUP_COMMANDS
+if [ ! -f "/factorio/saves/$FACTORIO_WORLD_NAME.zip" ]; then
+	/factorio/bin/x64/factorio --create "/factorio/saves/$FACTORIO_WORLD_NAME.zip" $FACTORIO_STARTUP_COMMANDS || true
+fi
+exec /factorio/bin/x64/factorio --start-server "/factorio/saves/$FACTORIO_WORLD_NAME.zip" $FACTORIO_STARTUP_COMMANDS

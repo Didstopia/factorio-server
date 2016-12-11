@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/bash 
 
-# Set Docker to use the machine
-eval "$(docker-machine env default)"
+./docker_build.sh
 
 # Run the server
-docker run -p 34197:34197/udp -v $(pwd)/factorio_data:/factorio/saves --name factorio-server -d didstopia/factorio-server:latest
+docker run -p 34197:34197/udp -v $(pwd)/factorio_data:/factorio --name factorio-server -d didstopia/factorio-server:latest
 docker logs -f factorio-server

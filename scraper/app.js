@@ -2,7 +2,7 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-var semver = require('semver');
+//var semver = require('semver');
 
 var baseUrl = 'https://www.factorio.com';
 var versionRegex = /^(?:\/get-download\/)(.*)(?:\/headless\/linux64)$/;
@@ -36,7 +36,8 @@ request(baseUrl + '/download-headless', function (error, response, html)
 				}
 			}
 		});
-		var maxVersion = versions.sort(semver.rcompare)[0];
+		//var maxVersion = versions.sort(semver.rcompare)[0];
+		var maxVersion = versions[0];
 		var maxUrl = urls[versions.indexOf(maxVersion)];
 		if (param === 'version') console.log(maxVersion);
 		else if (param === 'url') console.log(baseUrl + maxUrl);

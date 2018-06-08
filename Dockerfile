@@ -13,13 +13,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libasound2 \
     xorg-dev \
     libx11-6 \
-	libxcursor1 \
-	libxinerama1 \
-	libxrandr2 \
-	libxi6 \
-	libgl1-mesa-dev \
+    libxcursor1 \
+    libxinerama1 \
+    libxrandr2 \
+    libxi6 \
+    libgl1-mesa-dev \
     curl \
-    wget
+    wget \
+    xz-utils
 
 # Run as root
 USER root

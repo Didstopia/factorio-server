@@ -34,9 +34,9 @@ set -m
 	else
 		#LATEST_LINK=$(node /scraper/app.js url);
                 LATEST_LINK=https://www.factorio.com/get-download/stable/headless/linux64
-		wget -q --show-progress --no-check-certificate $LATEST_LINK -O /factorio.tar.gz && \
-		tar -xzf /factorio.tar.gz -C / && \
+		wget -q --show-progress --no-check-certificate $LATEST_LINK -O /factorio.tar.xz && \
+		tar -xJf /factorio.tar.xz -C / && \
 		chmod +x /factorio/bin/x64/factorio && \
-		rm -fr /factorio.tar.gz
+		rm -fr /factorio.tar.xz
 	fi
 #fi

@@ -11,9 +11,10 @@ if [ ! -z ${FACTORIO_SERVER_SETTINGS+x} ]; then
 	fi
 fi
 
+## TODO: Since we can't check for updates properly right now, this would just cause issues for us..
 # Start cron
-echo "Starting scheduled task manager.."
-node /scheduler_app/app.js &
+#echo "Starting scheduled task manager.."
+#node /scheduler_app/app.js &
 
 # Set the working directory
 cd /

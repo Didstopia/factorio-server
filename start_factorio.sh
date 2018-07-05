@@ -18,9 +18,10 @@ node /scheduler_app/app.js &
 # Set the working directory
 cd /
 
+## TODO: Disabled, because I think this has been implemented as part of the game itself now?
 # Check for autosave file
-echo "Checking autosaves.."
-./check_autosave.sh
+#echo "Checking autosaves.."
+#./check_autosave.sh
 
 # Run the server (create map if it doesn't exist yet)
 echo "Starting Factorio.."

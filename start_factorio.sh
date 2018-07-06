@@ -4,7 +4,7 @@
 ./update_check.sh
 
 # Setup Factorio startup arguments
-FACTORIO_STARTUP_COMMANDS=""
+FACTORIO_STARTUP_COMMANDS="--port ${FACTORIO_PORT}"
 if [ ! -z ${FACTORIO_SERVER_SETTINGS+x} ]; then
 	if [ "$FACTORIO_SERVER_SETTINGS" != "" ]; then
 		FACTORIO_STARTUP_COMMANDS="$FACTORIO_STARTUP_COMMANDS --server-settings $FACTORIO_SERVER_SETTINGS"

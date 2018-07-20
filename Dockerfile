@@ -60,6 +60,7 @@ EXPOSE 34197/udp
 # Setup default environment variables for the server
 ENV FACTORIO_WORLD_NAME "docker"
 ENV FACTORIO_SERVER_SETTINGS ""
+ENV FACTORIO_PORT "34197"
 
 # Cleanup
 RUN DEBIAN_FRONTEND=noninteractive apt-get autoclean && DEBIAN_FRONTEND=noninteractive apt-get clean

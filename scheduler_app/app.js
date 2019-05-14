@@ -1,17 +1,11 @@
 #!/usr/bin/env node
 
-var debug = false;
+var debug = true;
 
 var child_process = require('child_process');
 
 var startupDelayInSeconds = 60 * 5;
 var runIntervalInSeconds = 60 * 5;
-
-if (debug)
-{
-	startupDelayInSeconds = 1;
-	runIntervalInSeconds = 60;
-}
 
 // Start the endless loop after a delay (allow the server to start)
 setTimeout(function()
@@ -27,6 +21,7 @@ function checkForUpdates()
 		child_process.exec('bash /update_check.sh', { timeout: 60 * 1000, env: process.env }, function (err, stdout, stderr)
 		{
 			if (debug) console.log(stdout);
+			if (debug) console.log(stderr);
 			checkForUpdates();
 		});		
 	}, 1000 * runIntervalInSeconds);

@@ -12,4 +12,5 @@ The following environment variables are available:
 ```
 FACTORIO_WORLD_NAME (DEFAULT: "docker" - Name of the save zip file)
 FACTORIO_SERVER_SETTINGS (DEFAULT: "" - Set to 1 to the full file path of your server-settings.json *inside the container*, if you use one, ie. `/factorio/server-settings.json`)
+FACTORIO_VERSION (DEFAULT: "stable" - Set to "stable" or "latest")
 ```

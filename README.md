@@ -1,6 +1,5 @@
 # Factorio server that runs inside a Docker container
-[![Docker Automated build](https://img.shields.io/docker/automated/didstopia/factorio-server.svg)](https://hub.docker.com/r/didstopia/factorio-server/)
-[![Docker build status](https://img.shields.io/docker/build/didstopia/factorio-server.svg)](https://hub.docker.com/r/didstopia/factorio-server/)
+[![Build](https://github.com/Didstopia/factorio-server/actions/workflows/build.yml/badge.svg)](https://github.com/Didstopia/factorio-server/actions/workflows/build.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/didstopia/factorio-server.svg)](https://hub.docker.com/r/didstopia/factorio-server/)
 [![Docker stars](https://img.shields.io/docker/stars/didstopia/factorio-server.svg)](https://hub.docker.com/r/didstopia/factorio-server)
 

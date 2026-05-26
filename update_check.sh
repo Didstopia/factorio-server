@@ -11,7 +11,7 @@ if [ -f "/factorio/build.id" ]; then
 fi
 
 # Get the new build id
-NEW_BUILDID=$(curl -s --head -L https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64 | grep ETag | tr -d '\n');
+NEW_BUILDID=$(curl -s --head -L https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64 | grep -i etag | tr -d '\n');
 
 # Check that we actually got a new build id
 STRING_SIZE=${#NEW_BUILDID}
@@ -37,11 +37,11 @@ else
 		#This is the startup run
 		#LATEST_LINK=$(node /scraper/app.js url);
                 LATEST_LINK=https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64
-		#wget -q --show-progress --no-check-certificate $LATEST_LINK -O /factorio.tar.xz && \
-		wget -q --no-check-certificate $LATEST_LINK -O /factorio.tar.xz && \
-		tar -xJf /factorio.tar.xz -C / && \
+		#wget -q --show-progress --no-check-certificate $LATEST_LINK -O /tmp/factorio.tar.xz && \
+		wget -q --no-check-certificate $LATEST_LINK -O /tmp/factorio.tar.xz && \
+		tar -xJf /tmp/factorio.tar.xz -C / && \
 		chmod +x /factorio/bin/x64/factorio && \
-		rm -fr /factorio.tar.xz
+		rm -fr /tmp/factorio.tar.xz
 		
 		echo $NEW_BUILDID > /factorio/build.id
 	fi
